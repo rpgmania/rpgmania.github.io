@@ -32,14 +32,14 @@
     </div>
 
   <div data-controller="counter" class="mb-4">
-    <p>Action Tokens: <span data-target="counter.value">0</span></p>
+    <p class="font-bold text-lg mb-2">Action Tokens: <span data-target="counter.value">0</span></p>
     <button data-action="click->counter#increment" class="px-4 py-2 bg-blue-500 text-white rounded-md">+</button>
     <button data-action="click->counter#decrement" class="px-4 py-2 bg-red-500 text-white rounded-md ml-2">-</button>
   </div>
 
    <div class="mb-8">
         <div data-controller="fear">
-            <p class="mb-2">Fear Tokens:</p>
+            <p class="font-bold text-lg mb-2">Fear Tokens:</p>
             <div class="flex flex-wrap gap-2">
                 <label for="fear-token-1" class="inline-flex items-center">
                     <input type="checkbox" id="fear-token-1" data-action="click->fear#toggle"
@@ -99,7 +99,7 @@
     </div>
 
   <div data-controller="countdown" class="mb-4">
-    <p>Countdown: <span data-target="countdown.value">8</span></p>
+    <p class="font-bold text-lg mb-2">Countdown: <span data-target="countdown.value">8</span></p>
     <button data-action="click->countdown#increase" class="px-4 py-2 bg-green-500 text-white rounded-md">+</button>
     <button data-action="click->countdown#decrease" class="px-4 py-2 bg-yellow-500 text-white rounded-md ml-2">-</button>
   </div>
