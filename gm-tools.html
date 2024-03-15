@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daggerheart GM Tools</title>
+  <!-- Include Tailwind CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Include Stimulus.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/stimulus/dist/stimulus.umd.js"></script>
+</head>
+<body class="bg-gray-100 py-8 px-4 mx-auto">
+<div class="max-w-xl mx-auto">
+  <h1 class="text-3xl font-bold mb-4">Daggerheart GM Tools</h1>
+
+ <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-8">
+      <p class="font-semibold">This is a simple tool to help GMs track resources in Daggerheart</p>
+    </div>
+
+  <div data-controller="counter" class="mb-4">
+    <p>Action Tokens: <span data-target="counter.value">0</span></p>
+    <button data-action="click->counter#increment" class="px-4 py-2 bg-blue-500 text-white rounded-md">+</button>
+    <button data-action="click->counter#decrement" class="px-4 py-2 bg-red-500 text-white rounded-md ml-2">-</button>
+  </div>
+
+   <div class="mb-8">
+        <div data-controller="fear">
+            <p class="mb-2">Fear Tokens:</p>
+            <div class="flex flex-wrap gap-2">
+                <label for="fear-token-1" class="inline-flex items-center">
+                    <input type="checkbox" id="fear-token-1" data-action="click->fear#toggle"
+                        data-target="fear.checkbox" value="1"
+                        class="form-checkbox h-5 w-5 text-blue-600">
+                </label>
+                <!-- Add more checkboxes up to Fear Token 10 -->
+                <!-- Example for checkbox 2 -->
+                <label for="fear-token-2" class="inline-flex items-center">
+                    <input type="checkbox" id="fear-token-2" data-action="click->fear#toggle"
+                        data-target="fear.checkbox" value="2"
+                        class="form-checkbox h-5 w-5 text-blue-600">
+                </label>
+                <label for="fear-token-1" class="inline-flex items-center">
+                    <input type="checkbox" id="fear-token-3" data-action="click->fear#toggle"
+                        data-target="fear.checkbox" value="3"
+                        class="form-checkbox h-5 w-5 text-blue-600">
+                </label>
+                <label for="fear-token-1" class="inline-flex items-center">
+                    <input type="checkbox" id="fear-token-4" data-action="click->fear#toggle"
+                        data-target="fear.checkbox" value="4"
+                        class="form-checkbox h-5 w-5 text-blue-600">
+                </label>
+                <label for="fear-token-1" class="inline-flex items-center">
+                    <input type="checkbox" id="fear-token-5" data-action="click->fear#toggle"
+                        data-target="fear.checkbox" value="5"
+                        class="form-checkbox h-5 w-5 text-blue-600">
+                </label>
+                <label for="fear-token-1" class="inline-flex items-center">
+                    <input type="checkbox" id="fear-token-6" data-action="click->fear#toggle"
+                        data-target="fear.checkbox" value="6"
+                        class="form-checkbox h-5 w-5 text-blue-600">
+                </label>
+                 <label for="fear-token-1" class="inline-flex items-center">
+                    <input type="checkbox" id="fear-token-7" data-action="click->fear#toggle"
+                        data-target="fear.checkbox" value="7"
+                        class="form-checkbox h-5 w-5 text-blue-600">
+                </label>
+                 <label for="fear-token-1" class="inline-flex items-center">
+                    <input type="checkbox" id="fear-token-8" data-action="click->fear#toggle"
+                        data-target="fear.checkbox" value="8"
+                        class="form-checkbox h-5 w-5 text-blue-600">
+                </label>
+                <label for="fear-token-1" class="inline-flex items-center">
+                    <input type="checkbox" id="fear-token-9" data-action="click->fear#toggle"
+                        data-target="fear.checkbox" value="9"
+                        class="form-checkbox h-5 w-5 text-blue-600">
+                </label>
+                <label for="fear-token-10" class="inline-flex items-center">
+                    <input type="checkbox" id="fear-token-10" data-action="click->fear#toggle"
+                        data-target="fear.checkbox" value="10"
+                        class="form-checkbox h-5 w-5 text-blue-600">
+                </label>
+                <!-- Add checkboxes up to Fear Token 10 -->
+            </div>
+        </div>
+    </div>
+
+  <div data-controller="countdown" class="mb-4">
+    <p>Countdown: <span data-target="countdown.value">8</span></p>
+    <button data-action="click->countdown#increase" class="px-4 py-2 bg-green-500 text-white rounded-md">+</button>
+    <button data-action="click->countdown#decrease" class="px-4 py-2 bg-yellow-500 text-white rounded-md ml-2">-</button>
+  </div>
+
+  <script>
+    // Define Stimulus controllers
+    const application = Stimulus.Application.start();
+
+    application.register("counter", class extends Stimulus.Controller {
+      static targets = ["value"];
+
+      increment() {
+        const newValue = parseInt(this.valueTarget.textContent, 10) + 1;
+        this.valueTarget.textContent = newValue;
+      }
+
+      decrement() {
+        let newValue = parseInt(this.valueTarget.textContent, 10) - 1;
+        newValue = Math.max(newValue, 0); // Ensure newValue doesn't go below 0
+        this.valueTarget.textContent = newValue;
+      }
+    });
+
+    application.register("fear", class extends Stimulus.Controller {
+      static targets = ["checkbox"];
+
+      toggle(event) {
+        const checkedCount = this.checkboxTargets.filter(checkbox => checkbox.checked).length;
+        if (checkedCount > 10) {
+          event.preventDefault();
+        }
+      }
+    });
+
+    application.register("countdown", class extends Stimulus.Controller {
+      static targets = ["value"];
+
+      decrease() {
+        let newValue = parseInt(this.valueTarget.textContent, 10) - 1;
+        newValue = Math.max(newValue, 0); // Ensure newValue doesn't go below 0
+        this.valueTarget.textContent = newValue;
+      }
+
+      increase() {
+        let newValue = parseInt(this.valueTarget.textContent, 10) + 1;
+        newValue = Math.min(newValue, 8); // Limit newValue to maximum of 8
+        this.valueTarget.textContent = newValue;
+      }
+    });
+  </script>
+</div>
+</body>
+</html>
+
