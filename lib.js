@@ -43,3 +43,22 @@
     }
   });
 
+// Ambush encounter
+
+application.register("rolldmg", class extends Stimulus.Controller {
+    static targets = ["value"];
+
+    roll() {
+      let newValue = parseInt(Math.floor(Math.random() * 10) + 1) + 2;
+      this.valueTarget.textContent = newValue;
+    }
+  });
+
+  application.register("attack", class extends Stimulus.Controller {
+    static targets = ["value"];
+
+    atk() {
+      let newValue = parseInt(Math.floor(Math.random() * 20) + 1) + 1;
+      this.valueTarget.textContent = newValue;
+    }
+  });
