@@ -1,10 +1,10 @@
-# Daggerheart GM Tools
+# Daggerheart Fight Club
 
 This is a simple tool designed to help Game Masters (GMs) track resources in the Daggerheart role-playing game. 
 
 ## Overview
 
-The Daggerheart GM Tools provide functionalities to manage action tokens, fear tokens, and a countdown timer. It's built using HTML, Tailwind CSS for styling, and Stimulus.js for interactivity.
+Daggerheart Fight Club provides functionalities to manage action tokens, fear tokens, and a countdown timer. It's built using HTML, Tailwind CSS for styling, and Stimulus.js for interactivity.
 
 ### Features
 
@@ -13,8 +13,6 @@ The Daggerheart GM Tools provide functionalities to manage action tokens, fear t
 - Set and adjust a countdown timer with increase and decrease buttons.
 
 ## Usage
-
-To use the Daggerheart GM Tools:
 
 1. Clone the repository or download the HTML file.
 2. Open the HTML file in your web browser.
