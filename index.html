@@ -113,53 +113,7 @@
     <button data-action="click->countdown#increase" class="px-4 py-2 bg-green-500 text-white rounded-md">+</button>
     <button data-action="click->countdown#decrease" class="px-4 py-2 bg-yellow-500 text-white rounded-md ml-2">-</button>
   </div>
-
-  <script>
-    // Define Stimulus controllers
-    const application = Stimulus.Application.start();
-
-    application.register("counter", class extends Stimulus.Controller {
-      static targets = ["value"];
-
-      increment() {
-        const newValue = parseInt(this.valueTarget.textContent, 10) + 1;
-        this.valueTarget.textContent = newValue;
-      }
-
-      decrement() {
-        let newValue = parseInt(this.valueTarget.textContent, 10) - 1;
-        newValue = Math.max(newValue, 0); // Ensure newValue doesn't go below 0
-        this.valueTarget.textContent = newValue;
-      }
-    });
-
-    application.register("fear", class extends Stimulus.Controller {
-      static targets = ["checkbox"];
-
-      toggle(event) {
-        const checkedCount = this.checkboxTargets.filter(checkbox => checkbox.checked).length;
-        if (checkedCount > 10) {
-          event.preventDefault();
-        }
-      }
-    });
-
-    application.register("countdown", class extends Stimulus.Controller {
-      static targets = ["value"];
-
-      decrease() {
-        let newValue = parseInt(this.valueTarget.textContent, 10) - 1;
-        newValue = Math.max(newValue, 0); // Ensure newValue doesn't go below 0
-        this.valueTarget.textContent = newValue;
-      }
-
-      increase() {
-        let newValue = parseInt(this.valueTarget.textContent, 10) + 1;
-        newValue = Math.min(newValue, 8); // Limit newValue to maximum of 8
-        this.valueTarget.textContent = newValue;
-      }
-    });
-  </script>
+  <script src="https://github.com/rpgmania/rpgmania.github.io/blob/main/lib.js"></script>
 </div>
 </body>
 </html>
