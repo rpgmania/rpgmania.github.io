@@ -13,57 +13,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daggerheart Fight Club</title>
-   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/rpgmania/rpgmania.github.io/7228d06fd04ece529a95d6b1f7c8c8d898305a1c/dhf.svg">
-  <!-- Include Tailwind CSS via CDN -->
+  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/rpgmania/rpgmania.github.io/7228d06fd04ece529a95d6b1f7c8c8d898305a1c/dhf.svg">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Include Stimulus.js via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/stimulus/dist/stimulus.umd.js"></script>
-<style>
+ 
+  <style>
     body {
-      font-size: 20px; /* Increase font size for better readability */
-      color: #333; /* Dark text color for better contrast */
+      font-size: 20px;
+      color: #333;
     }
 
-    /* Adjust checkbox styles */
     .form-checkbox {
       height: 1.6rem;
       width: 1.6rem;
     }
+
+    .monsters-container {
+      display: flex;
+      gap: 20px; /* Adjust the gap between cards as needed */
+      max-width: calc(100% - 8px); /* Adjust the max-width to prevent horizontal scrolling in smaller screens */
+      margin: 0 -4px; /* Add negative margin to offset flex container padding */
+      padding: 0 4px; /* Add padding to the flex container */
+      scroll-snap-type: x mandatory; /* Enable smooth horizontal scrolling */
+    }
+
+    .monster-card {
+      scroll-snap-align: start; /* Align cards to the start of the scroll container */
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      max-width: 400px;
+    }
   </style>
-
-
 </head>
 <body class="bg-gray-100 py-8 px-4 mx-auto">
 <div class="max-w-xl mx-auto">
   <h1 class="text-3xl font-bold mb-4">Daggerheart Fight Club</h1>
-
- <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-8">
-      <p  class="text-2xl font-bold mb-2">This is a simple tool to help GMs track resources in Daggerheart</p>
-    </div>
-
+  <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-8">
+    <p class="text-2xl font-bold mb-2">This is a simple tool to help GMs track resources in Daggerheart</p>
+  </div>
   <div data-controller="counter" class="mb-4">
     <p class="font-bold text-lg mb-2">Action Tokens: <span data-target="counter.value">0</span></p>
     <button data-action="click->counter#increment" class="px-4 py-2 bg-blue-500 text-white rounded-md">+</button>
     <button data-action="click->counter#decrement" class="px-4 py-2 bg-red-500 text-white rounded-md ml-2">-</button>
   </div>
-
-   <div class="mb-8">
-        <div data-controller="fear">
-            <p class="font-bold text-lg mb-2">Fear Tokens:</p>
-            <div class="flex flex-wrap gap-2">
-                <label for="fear-token-1" class="inline-flex items-center">
-                    <input type="checkbox" id="fear-token-1" data-action="click->fear#toggle"
-                        data-target="fear.checkbox" value="1"
-                        class="form-checkbox h-5 w-5 text-blue-600">
-                </label>
-                <!-- Add more checkboxes up to Fear Token 10 -->
-                <!-- Example for checkbox 2 -->
-                <label for="fear-token-2" class="inline-flex items-center">
-                    <input type="checkbox" id="fear-token-2" data-action="click->fear#toggle"
-                        data-target="fear.checkbox" value="2"
-                        class="form-checkbox h-5 w-5 text-blue-600">
-                </label>
-                <label for="fear-token-1" class="inline-flex items-center">
+  <div class="mb-8">
+    <div data-controller="fear">
+      <p class="font-bold text-lg mb-2">Fear Tokens:</p>
+      <div class="flex flex-wrap gap-2">
+        <label for="fear-token-1" class="inline-flex items-center">
+          <input type="checkbox" id="fear-token-1" data-action="click->fear#toggle"
+                 data-target="fear.checkbox" value="1"
+                 class="form-checkbox h-5 w-5 text-blue-600">
+        </label>
+        <!-- Add more checkboxes up to Fear Token 10 -->
+        <!-- Example for checkbox 2 -->
+        <label for="fear-token-2" class="inline-flex items-center">
+          <input type="checkbox" id="fear-token-2" data-action="click->fear#toggle"
+                 data-target="fear.checkbox" value="2"
+                 class="form-checkbox h-5 w-5 text-blue-600">
+        </label>
+ <label for="fear-token-1" class="inline-flex items-center">
                     <input type="checkbox" id="fear-token-3" data-action="click->fear#toggle"
                         data-target="fear.checkbox" value="3"
                         class="form-checkbox h-5 w-5 text-blue-600">
@@ -104,18 +114,17 @@
                         class="form-checkbox h-5 w-5 text-blue-600">
                 </label>
                 <!-- Add checkboxes up to Fear Token 10 -->
-            </div>
-        </div>
+ 
+        <!-- Add checkboxes up to Fear Token 10 -->
+      </div>
     </div>
-
+  </div>
   <div data-controller="countdown" class="mb-4">
     <p class="font-bold text-lg mb-2">Countdown: <span data-target="countdown.value">8</span></p>
     <button data-action="click->countdown#increase" class="px-4 py-2 bg-green-500 text-white rounded-md">+</button>
     <button data-action="click->countdown#decrease" class="px-4 py-2 bg-yellow-500 text-white rounded-md ml-2">-</button>
   </div>
-  <script src="lib.js"></script>
-</div>
-  <div class="max-w-lg mx-auto bg-white rounded shadow p-6">
+<div class="max-w-lg mx-auto bg-white rounded shadow p-6">
   <h2 class="font-bold text-2xl mb-4">GM Moves</h2>
 
   <ul class="list-disc pl-5">
@@ -142,6 +151,186 @@
 failure or with Fear.</li>
   </ul>
 </div>
+  
+<h2 class="text-3xl font-bold mb-4">Monsters</h2>
+<!-- Monster stat blocks container -->
+  <div class="monsters-container">
+  
+    <!-- First monster card -->
+    <div class="max-w-lg bg-white rounded shadow p-6 monster-card" data-controller="monster">
+      <h1 class="text-2xl font-bold mb-4" data-target="monster.title">Thistlefolk Ambusher</h1>
+      <div class="mb-4">
+        <p><strong>Dagger</strong> - Melee - <span id="damageOutput">2d8+1</span> (phy)</p>
+        <p>Attack Modifier: +1</p>
+        <p>Difficulty: 13</p>
+        <p>Minor 1 | Major 6 | Severe 10</p>
+      </div>
+      <div class="mb-4">
+        <p>HP:</p>
+        <div class="flex items-center">
+          <input type="checkbox" id="hp1" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp2" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp3" data-target="monster.hp" class="hp-checkbox mr-1">
+        </div>
+      </div>
+      <p>Stress: None</p>
+      <div data-controller="attack" class="mb-4">
+        <p class="font-bold text-lg mb-2">Attack Roll: <span data-target="attack.value"></span></p>
+        <button data-action="click->attack#atk" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 1d20+1</button>
+      </div>
+      <div data-controller="rolldmg" class="mb-4">
+        <p class="font-bold text-lg mb-2">Damage: <span data-target="rolldmg.value"></span></p>
+        <button data-action="click->rolldmg#roll" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 2d8+1</button>
+      </div>
+      <button data-action="click->monster#duplicate" class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4">
+        Duplicate Monster
+      </button>
+    </div>
+
+
+ <div class="max-w-lg bg-white rounded shadow p-6 monster-card" data-controller="monster">
+      <h1 class="text-2xl font-bold mb-4" data-target="monster.title">Thistlefolk Thief</h1>
+      <div class="mb-4">
+        <p><strong>Serated Blade</strong> - Melee - <span id="damageOutput">3d6</span> (phy)</p>
+        <p>Attack Modifier: +3</p>
+        <p>Difficulty: 14</p>
+        <p>Minor 1 | Major 10 | Severe 15</p>
+      </div>
+      <div class="mb-4">
+        <p>HP:</p>
+        <div class="flex items-center">
+          <input type="checkbox" id="hp1" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp2" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp3" data-target="monster.hp" class="hp-checkbox mr-1">
+        </div>
+      </div>
+      <p>Stress: None</p>
+      <p>MOVE
+Back Off: Spend Fear and make an attack roll against a target. On a
+success, the thief places their hand on the target’s chest and blasts them
+backwards, dealing 2d8 magic damage and pushing them into far range.</p>  
+      <div data-controller="attack" class="mb-4">
+        <p class="font-bold text-lg mb-2">Attack Roll: <span data-target="attack.value"></span></p>
+        <button data-action="click->attack#atkThief" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 1d20+3</button>
+      </div>
+      <div data-controller="rolldmg" class="mb-4">
+        <p class="font-bold text-lg mb-2">Damage: <span data-target="rolldmg.value"></span></p>
+        <button data-action="click->rolldmg#rollThief" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 3d6+3</button>
+      </div>
+      <button data-action="click->monster#duplicate" class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4">
+        Duplicate Monster
+      </button>
+    </div>
+    <!-- Second monster card -->
+    <div class="max-w-lg bg-white rounded shadow p-6 monster-card" data-controller="monster">
+      <h1 class="text-2xl font-bold mb-4" data-target="monster.title">Strix-Wolf Mother</h1>
+      <div class="mb-4">
+        <p><strong>Bite</strong> - Melee - <span id="damageOutput">1d6+3</span> (phy)</p>
+        <p>Attack Modifier: +1</p>
+        <p>Difficulty: 10</p>
+        <p>Minor 1 | Major 4 | Severe 8</p>
+      </div>
+      <div class="mb-4">
+        <p>HP:</p>
+        <div class="flex items-center">
+          <input type="checkbox" id="hp1" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp2" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp3" data-target="monster.hp" class="hp-checkbox mr-1">
+        </div>
+      </div>
+      <p>Stress: None</p>
+      <div data-controller="attack" class="mb-4">
+        <p class="font-bold text-lg mb-2">Attack Roll: <span data-target="attack.value"></span></p>
+        <button data-action="click->attack#atktrix" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 1d20+1</button>
+      </div>
+      <div data-controller="rolldmg" class="mb-4">
+        <p class="font-bold text-lg mb-2">Damage: <span data-target="rolldmg.value"></span></p>
+        <button data-action="click->rolldmg#rolltrix" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 1d6+3</button>
+      </div>
+      <button data-action="click->monster#duplicate" class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4">
+        Duplicate Monster
+      </button>
+    </div>
+    <!-- Third monster card -->
+    <div class="max-w-lg bg-white rounded shadow p-6 monster-card" data-controller="monster">
+      <h1 class="text-2xl font-bold mb-4" data-target="monster.title">Ancient Skeleton</h1>
+      <div class="mb-4">
+        <p><strong>Rusted Sword</strong> - Melee - <span id="damageOutput">3d6+2</span> (phy)</p>
+        <p>Attack Modifier: +0</p>
+        <p>Difficulty: 12</p>
+        <p>Minor 1 | Major 8</p>
+      </div>
+      <div class="mb-4">
+        <p>HP:</p>
+        <div class="flex items-center">
+          <input type="checkbox" id="hp1" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp2" data-target="monster.hp" class="hp-checkbox mr-1">
+        </div>
+      </div>
+      <p>Stress: None</p>
+       <p><strong>MOVE</strong>
+<strong>Group Attack - Close 5</strong>
+Spend Fear and activate every ancient skeleton within Close range of a
+target to move into Melee with them, dealing 5 damage each.</p> 
+      <div data-controller="attack" class="mb-4">
+        <p class="font-bold text-lg mb-2">Attack Roll: <span data-target="attack.value"></span></p>
+        <button data-action="click->attack#atkSkel" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 1d20</button>
+      </div>
+      <div data-controller="rolldmg" class="mb-4">
+        <p class="font-bold text-lg mb-2">Damage: <span data-target="rolldmg.value"></span></p>
+        <button data-action="click->rolldmg#rollSkel" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 3d6+2</button>
+      </div>
+      <button data-action="click->monster#duplicate" class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4">
+        Duplicate Monster
+      </button>
+    </div>
+    <!-- Fourth monster card -->
+    <div class="max-w-lg bg-white rounded shadow p-6 monster-card" data-controller="monster">
+      <h1 class="text-2xl font-bold mb-4" data-target="monster.title">Forest Wraith </h1>
+      <div class="mb-4">
+        <p><strong>Lifedrain</strong> - Far - <span id="damageOutput">1d10+4</span> (mag)</p>
+        <p>Attack Modifier: +3</p>
+        <p>Difficulty: 13</p>
+        <p>Minor 1 | Major 10 | Severe 20</p>
+      </div>
+      <div class="mb-4">
+        <p>HP:</p>
+        <div class="flex items-center">
+          <input type="checkbox" id="hp1" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp2" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp3" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp4" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp5" data-target="monster.hp" class="hp-checkbox mr-1">
+          <input type="checkbox" id="hp6" data-target="monster.hp" class="hp-checkbox mr-1">
+        </div>
+      </div>
+      <p>Stress: None</p>
+       <p><strong>MOVE</strong>
+<strong>Spectral Body</strong>: The Forest Wraith has resistance to physical damage
+<strong>Memory Delve:</strong> Spend Fear to make an attack roll against a close target.
+On a success, the Forest Wraith flies into melee and places their hand
+upon the target’s cheek. Ask the player to describe a terrifying moment
+from their character’s childhood. Then deal 1d20+2 magic damage and
+make them temporarily Vulnerable until their next rest.
+<strong>Pass-Through: </strong>Spend 2 Fear and make an attack roll against a target in
+melee. On a success, the Forest Wraith passes through the target, pushing
+their soul from from their body momentarily. They cannot act again until
+the Ritual Countdown ticks down one value.</p> 
+      <div data-controller="attack" class="mb-4">
+        <p class="font-bold text-lg mb-2">Attack Roll: <span data-target="attack.value"></span></p>
+        <button data-action="click->attack#atkDrain" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 1d20+3</button>
+      </div>
+      <div data-controller="rolldmg" class="mb-4">
+        <p class="font-bold text-lg mb-2">Damage: <span data-target="rolldmg.value"></span></p>
+        <button data-action="click->rolldmg#rollDrain" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 1d10+4</button>
+      </div>
+      <button data-action="click->monster#duplicate" class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4">
+        Duplicate Monster
+      </button>
+    </div>
+  </div>
+</div>
+<script src="lib.js"></script>
 </body>
 </html>
-
+  
