@@ -1,64 +1,120 @@
-  // Define Stimulus controllers
-  const application = Stimulus.Application.start();
+// Define Stimulus controllers
+const application = Stimulus.Application.start();
 
-  application.register("counter", class extends Stimulus.Controller {
-    static targets = ["value"];
+application.register("counter", class extends Stimulus.Controller {
+  static targets = ["value"];
 
-    increment() {
-      const newValue = parseInt(this.valueTarget.textContent, 10) + 1;
-      this.valueTarget.textContent = newValue;
+  increment() {
+    const newValue = parseInt(this.valueTarget.textContent, 10) + 1;
+    this.valueTarget.textContent = newValue;
+  }
+
+  decrement() {
+    let newValue = parseInt(this.valueTarget.textContent, 10) - 1;
+    newValue = Math.max(newValue, 0); // Ensure newValue doesn't go below 0
+    this.valueTarget.textContent = newValue;
+  }
+});
+
+application.register("fear", class extends Stimulus.Controller {
+  static targets = ["checkbox"];
+
+  toggle(event) {
+    const checkedCount = this.checkboxTargets.filter(checkbox => checkbox.checked).length;
+    if (checkedCount > 10) {
+      event.preventDefault();
     }
+  }
+});
 
-    decrement() {
-      let newValue = parseInt(this.valueTarget.textContent, 10) - 1;
-      newValue = Math.max(newValue, 0); // Ensure newValue doesn't go below 0
-      this.valueTarget.textContent = newValue;
-    }
-  });
+application.register("countdown", class extends Stimulus.Controller {
+  static targets = ["value"];
 
-  application.register("fear", class extends Stimulus.Controller {
-    static targets = ["checkbox"];
+  decrease() {
+    let newValue = parseInt(this.valueTarget.textContent, 10) - 1;
+    newValue = Math.max(newValue, 0); // Ensure newValue doesn't go below 0
+    this.valueTarget.textContent = newValue;
+  }
 
-    toggle(event) {
-      const checkedCount = this.checkboxTargets.filter(checkbox => checkbox.checked).length;
-      if (checkedCount > 10) {
-        event.preventDefault();
-      }
-    }
-  });
+  increase() {
+    let newValue = parseInt(this.valueTarget.textContent, 10) + 1;
+    newValue = Math.min(newValue, 8); // Limit newValue to maximum of 8
+    this.valueTarget.textContent = newValue;
+  }
+});
 
-  application.register("countdown", class extends Stimulus.Controller {
-    static targets = ["value"];
+application.register("monster", class extends Stimulus.Controller {
+  static targets = ["title", "duplicateBtn"];
+  count = 1;
 
-    decrease() {
-      let newValue = parseInt(this.valueTarget.textContent, 10) - 1;
-      newValue = Math.max(newValue, 0); // Ensure newValue doesn't go below 0
-      this.valueTarget.textContent = newValue;
-    }
+  duplicate() {
+    const clonedMonster = this.element.cloneNode(true);
+    this.count++;
+    const newId = `monster-${this.count}`;
+    clonedMonster.querySelector('[data-target="monster.title"]').textContent += ` #${this.count}`;
+    clonedMonster.id = newId;
+    clonedMonster.classList.add('monster-block');
+    this.element.parentNode.insertBefore(clonedMonster, this.element.nextSibling);
 
-    increase() {
-      let newValue = parseInt(this.valueTarget.textContent, 10) + 1;
-      newValue = Math.min(newValue, 8); // Limit newValue to maximum of 8
-      this.valueTarget.textContent = newValue;
-    }
-  });
-
-// Ambush encounter
+    // Remove the Duplicate Monster button from the cloned monster
+    clonedMonster.querySelector('[data-target="monster.duplicateBtn"]').remove();
+  }
+});
 
 application.register("rolldmg", class extends Stimulus.Controller {
-    static targets = ["value"];
+  static targets = ["value"];
 
-    roll() {
-      let newValue = parseInt(Math.floor(Math.random() * 10) + 1) + 2;
-      this.valueTarget.textContent = newValue;
-    }
-  });
+  roll() {
+    let newValue = parseInt(Math.floor(Math.random() * 8 * 2) + 1);
+    this.valueTarget.textContent = newValue;
+  }
 
-  application.register("attack", class extends Stimulus.Controller {
-    static targets = ["value"];
+  rolltrix() {
+    let newValue = parseInt(Math.floor(Math.random() * 6) + 1) + 3;
+    this.valueTarget.textContent = newValue;
+  }
 
-    atk() {
-      let newValue = parseInt(Math.floor(Math.random() * 20) + 1) + 1;
-      this.valueTarget.textContent = newValue;
-    }
-  });
+  rollSkel() {
+    let newValue = parseInt(Math.floor(Math.random() * 6 * 3) + 2);
+    this.valueTarget.textContent = newValue;
+  }
+
+  rollDrain() {
+    let newValue = parseInt(Math.floor(Math.random() * 10) + 1) + 4;
+    this.valueTarget.textContent = newValue;
+  }
+
+  rollThief() {
+    let newValue = parseInt(Math.floor(Math.random() * 6 * 3) + 1);
+    this.valueTarget.textContent = newValue;
+  }
+});
+
+application.register("attack", class extends Stimulus.Controller {
+  static targets = ["value"];
+
+  atk() {
+    let newValue = parseInt(Math.floor(Math.random() * 20) + 1);
+    this.valueTarget.textContent = newValue;
+  }
+
+  atkSkel() {
+    let newValue = parseInt(Math.floor(Math.random() * 20));
+    this.valueTarget.textContent = newValue;
+  }
+
+  atkDrain() {
+    let newValue = parseInt(Math.floor(Math.random() * 20) + 3);
+    this.valueTarget.textContent = newValue;
+  }
+
+  atkThief() {
+    let newValue = parseInt(Math.floor(Math.random() * 20) + 3);
+    this.valueTarget.textContent = newValue;
+  }
+
+  atktrix() {
+    let newValue = parseInt(Math.floor(Math.random() * 20) + 1);
+    this.valueTarget.textContent = newValue;
+  }
+});
