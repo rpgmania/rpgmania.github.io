@@ -99,6 +99,7 @@ application.register("rolldmg", class extends Stimulus.Controller {
   }
 });
 
+
 application.register("attack", class extends Stimulus.Controller {
   static targets = ["value"];
 
