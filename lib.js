@@ -78,9 +78,9 @@ application.register("rolldmg", class extends Stimulus.Controller {
   }
 
   rollSkel() {
-    let diceRoll1 = Math.floor(Math.random() * 6);
-  let diceRoll2 = Math.floor(Math.random() * 6);
-  let diceRoll3 = Math.floor(Math.random() * 6);
+    let diceRoll1 = Math.floor(Math.random() * 6) +1;
+  let diceRoll2 = Math.floor(Math.random() * 6) +1;
+  let diceRoll3 = Math.floor(Math.random() * 6) +1;
   let newValue = diceRoll1 + diceRoll2 + diceRoll3 + 2;
   }
 
@@ -92,9 +92,9 @@ application.register("rolldmg", class extends Stimulus.Controller {
   }
 
   rollThief() {
-  let diceRoll1 = Math.floor(Math.random() * 6);
-  let diceRoll2 = Math.floor(Math.random() * 6);
-  let diceRoll3 = Math.floor(Math.random() * 6);
+  let diceRoll1 = Math.floor(Math.random() * 6) +1;
+  let diceRoll2 = Math.floor(Math.random() * 6) +1;
+  let diceRoll3 = Math.floor(Math.random() * 6)+1;
   let newValue = diceRoll1 + diceRoll2 + diceRoll3 + 1;
   }
 });
