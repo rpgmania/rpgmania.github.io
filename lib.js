@@ -65,28 +65,37 @@ application.register("rolldmg", class extends Stimulus.Controller {
   static targets = ["value"];
 
   roll() {
-    let newValue = parseInt(Math.floor(Math.random() * 8 * 2) + 1);
-    this.valueTarget.textContent = newValue;
+     let diceRoll1 = Math.floor(Math.random() * 8) + 1;
+  let diceRoll2 = Math.floor(Math.random() * 8) + 1;
+  let newValue = diceRoll1 + diceRoll2 + 1;
+  this.valueTarget.textContent = newValue;
   }
 
   rolltrix() {
-    let newValue = parseInt(Math.floor(Math.random() * 6) + 1) + 3;
-    this.valueTarget.textContent = newValue;
+    let diceRoll = Math.floor(Math.random() * 6) + 1;
+  let newValue = diceRoll + 3;
+  this.valueTarget.textContent = newValue;
   }
 
   rollSkel() {
-    let newValue = parseInt(Math.floor(Math.random() * 6 * 3) + 2);
-    this.valueTarget.textContent = newValue;
+    let diceRoll1 = Math.floor(Math.random() * 6);
+  let diceRoll2 = Math.floor(Math.random() * 6);
+  let diceRoll3 = Math.floor(Math.random() * 6);
+  let newValue = diceRoll1 + diceRoll2 + diceRoll3 + 2;
   }
 
   rollDrain() {
-    let newValue = parseInt(Math.floor(Math.random() * 10) + 1) + 4;
-    this.valueTarget.textContent = newValue;
+   let diceRoll = Math.floor(Math.random() * 10) + 1;
+  let newValue = diceRoll + 4;
+  this.valueTarget.textContent = newValue;
+
   }
 
   rollThief() {
-    let newValue = parseInt(Math.floor(Math.random() * 6 * 3) + 1);
-    this.valueTarget.textContent = newValue;
+  let diceRoll1 = Math.floor(Math.random() * 6);
+  let diceRoll2 = Math.floor(Math.random() * 6);
+  let diceRoll3 = Math.floor(Math.random() * 6);
+  let newValue = diceRoll1 + diceRoll2 + diceRoll3 + 1;
   }
 });
 
