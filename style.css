@@ -29,12 +29,9 @@ body {
         flex: 1 1 calc(100% - 20px); /* Single card per row on mobile */
       }
 
-      /* Mobile navigation styles */
-      .top-menu {
-        position: relative;
-      }
+      
 
-      .top-menu .mobile-menu {
+      .top-menu {
         display: none;
         position: absolute;
         top: 100%;
@@ -45,18 +42,18 @@ body {
         text-align: center;
       }
 
-      .top-menu .mobile-menu a {
+      .top-menu a {
         display: block;
         color: #fff;
         text-decoration: none;
         padding: 10px;
       }
 
-      .top-menu .mobile-menu a:hover {
+      .top-menu a:hover {
         background-color: #555;
       }
 
-      .top-menu .mobile-menu.active {
+      .top-menu  {
         display: block;
       }
 
@@ -65,7 +62,7 @@ body {
       }
 
       @media only screen and (max-width: 480px) {
-        .top-menu .menu-toggle {
+        .top-menu {
           display: block;
           cursor: pointer;
           color: #fff;
