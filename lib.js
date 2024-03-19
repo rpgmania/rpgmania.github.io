@@ -73,7 +73,7 @@ application.register("rolldmg", class extends Stimulus.Controller {
   rollmag() {
     let diceRoll1 = Math.floor(Math.random() * 8) + 1;
     let diceRoll2 = Math.floor(Math.random() * 8) + 1;
-    let newValue = diceRoll1 + diceRoll2 + 4;
+    let newValue = diceRoll1 + diceRoll2;
     this.valueTarget.textContent = newValue;
   }
 
