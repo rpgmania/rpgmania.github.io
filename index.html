@@ -222,6 +222,10 @@ backwards, dealing 2d8 magic damage and pushing them into far range.</p>
         <p class="font-bold text-lg mb-2">Damage: <span data-target="rolldmg.value"></span></p>
         <button data-action="click->rolldmg#rollThief" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 3d6+3</button>
       </div>
+   <div data-controller="rolldmg" class="mb-4">
+        <p class="font-bold text-lg mb-2">Damage: <span data-target="rolldmg.value"></span></p>
+        <button data-action="click->rolldmg#rollmag" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 2d8</button>
+      </div>
       <button data-action="click->monster#duplicate" class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4">
         Duplicate Monster
       </button>
@@ -328,6 +332,10 @@ the Ritual Countdown ticks down one value.</p>
       <div data-controller="rolldmg" class="mb-4">
         <p class="font-bold text-lg mb-2">Damage: <span data-target="rolldmg.value"></span></p>
         <button data-action="click->rolldmg#rollDrain" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 1d10+4</button>
+      </div>
+      <div data-controller="rolldmg" class="mb-4">
+        <p class="font-bold text-lg mb-2">Damage: <span data-target="rolldmg.value"></span></p>
+        <button data-action="click->rolldmg#rollDrainmag" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 1d20+2</button>
       </div>
       <button data-action="click->monster#duplicate" class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4">
         Duplicate Monster
