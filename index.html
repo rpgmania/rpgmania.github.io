@@ -16,7 +16,8 @@
   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/rpgmania/rpgmania.github.io/7228d06fd04ece529a95d6b1f7c8c8d898305a1c/dhf.svg">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/stimulus/dist/stimulus.umd.js"></script>
-<style>
+
+  <style>
     body {
       font-size: 20px;
       color: #333;
@@ -47,51 +48,9 @@
       .monster-card {
         flex: 1 1 calc(100% - 20px); /* Single card per row on mobile */
       }
-
-      .top-menu {
-        flex-direction: column;
-        align-items: flex-start;
-        position: relative;
-      }
-
-      .top-menu a {
-        margin-right: 0;
-        margin-bottom: 10px;
-      }
-
-      .menu-toggle {
-        display: block;
-        background-color: #333;
-        color: #fff;
-        padding: 10px 20px;
-        cursor: pointer;
-      }
-
-      .menu-items {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        background-color: #333;
-        padding: 10px;
-      }
-
-      .menu-items a {
-        color: #fff;
-        text-decoration: none;
-        margin-bottom: 10px;
-      }
-
-      .menu-items a:hover {
-        text-decoration: underline;
-      }
-
-      .show-menu {
-        display: flex;
-      }
     }
 
-    /* Top Menu Styles */
+/* Top Menu Styles */
     .top-menu {
       display: flex;
       justify-content: space-between;
@@ -112,14 +71,8 @@
       text-decoration: underline;
     }
 
-    /* Hide menu toggle on big screens */
-    @media only screen and (min-width: 769px) {
-      .menu-toggle {
-        display: none;
-      }
-    }
+    
   </style>
- 
 </head>
 <body class="bg-gray-100 py-8 px-4 mx-auto">
 <div class="max-w-xl mx-auto">
@@ -130,13 +83,9 @@
   </div>
   <!-- Top Menu -->
   <div class="top-menu">
-    <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
-    <div class="menu-items" id="menuItems">
-      <a href="https://www.daggerheart.com/">Download the Playtest</a>
-      <a href="https://youtu.be/8vXe48xQSoo" target="_blank">Watch The Live One Shot</a>
-    </div>
+    <a href="https://www.daggerheart.com/">Download the Playtest</a>
+    <a href="https://youtu.be/8vXe48xQSoo" target="_blank">Critical Role's Daggerheart Live One Shot</a>
   </div>
-   
   <div data-controller="counter" class="mb-4">
     <p class="font-bold text-lg mb-2">Action Tokens: <span data-target="counter.value">0</span></p>
     <button data-action="click->counter#increment" class="px-4 py-2 bg-blue-500 text-white rounded-md">+</button>
@@ -434,12 +383,6 @@ the Ritual Countdown ticks down one value.</p>
   </div>
 </div>
 <script src="lib.js"></script>
-  <script>
-  function toggleMenu() {
-    const menuItems = document.getElementById('menuItems');
-    menuItems.classList.toggle('show-menu');
-  }
-</script>
 </body>
 </html>
   
