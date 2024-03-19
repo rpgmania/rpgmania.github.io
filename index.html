@@ -16,8 +16,7 @@
   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/rpgmania/rpgmania.github.io/7228d06fd04ece529a95d6b1f7c8c8d898305a1c/dhf.svg">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/stimulus/dist/stimulus.umd.js"></script>
-
-  <style>
+<style>
     body {
       font-size: 20px;
       color: #333;
@@ -112,7 +111,15 @@
     .top-menu a:hover {
       text-decoration: underline;
     }
+
+    /* Hide menu toggle on big screens */
+    @media only screen and (min-width: 769px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
   </style>
+ 
 </head>
 <body class="bg-gray-100 py-8 px-4 mx-auto">
 <div class="max-w-xl mx-auto">
