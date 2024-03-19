@@ -187,6 +187,10 @@ an attack against them. On a success, they strike with their dagger for
         <p class="font-bold text-lg mb-2">Damage: <span data-target="rolldmg.value"></span></p>
         <button data-action="click->rolldmg#roll" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 2d8+1</button>
       </div>
+        <div data-controller="rolldmg" class="mb-4">
+        <p class="font-bold text-lg mb-2">Damage: <span data-target="rolldmg.value"></span></p>
+        <button data-action="click->rolldmg#rollambush" class="px-4 py-2 bg-green-500 text-white rounded-md">Roll 2d8+4</button>
+      </div>
       <button data-action="click->monster#duplicate" class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4">
         Duplicate Monster
       </button>
