@@ -28,20 +28,54 @@ body {
       .monster-card {
         flex: 1 1 calc(100% - 20px); /* Single card per row on mobile */
       }
-    }
-/* Media Queries for iPhones */
-    @media only screen and (max-width: 414px) {
-      body {
-        font-size: 16px; /* Adjust font size for better readability on iPhones */
+
+      /* Mobile navigation styles */
+      .top-menu {
+        position: relative;
       }
 
-      .monster-card {
-        padding: 0.8rem; /* Adjust padding for better spacing on iPhones */
+      .top-menu .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 10px 0;
+        text-align: center;
       }
 
-      /* Add more specific styles for iPhones as needed */
+      .top-menu .mobile-menu a {
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+      }
+
+      .top-menu .mobile-menu a:hover {
+        background-color: #555;
+      }
+
+      .top-menu .mobile-menu.active {
+        display: block;
+      }
+
+      .top-menu .menu-toggle {
+        display: none;
+      }
+
+      @media only screen and (max-width: 480px) {
+        .top-menu .menu-toggle {
+          display: block;
+          cursor: pointer;
+          color: #fff;
+          font-size: 24px;
+          margin-right: 20px;
+        }
+      }
     }
-/* Top Menu Styles */
+
+    /* Top Menu Styles */
     .top-menu {
       display: flex;
       justify-content: space-between;
@@ -61,3 +95,4 @@ body {
     .top-menu a:hover {
       text-decoration: underline;
     }
+  
