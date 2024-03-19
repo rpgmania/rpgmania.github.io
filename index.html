@@ -30,15 +30,13 @@
 
     .monsters-container {
       display: flex;
+      flex-wrap: wrap; /* Allow cards to wrap to new line on smaller screens */
       gap: 20px; /* Adjust the gap between cards as needed */
-      max-width: calc(100% - 8px); /* Adjust the max-width to prevent horizontal scrolling in smaller screens */
-      margin: 0 -4px; /* Add negative margin to offset flex container padding */
-      padding: 0 4px; /* Add padding to the flex container */
-      scroll-snap-type: x mandatory; /* Enable smooth horizontal scrolling */
+      justify-content: center; /* Center align cards */
     }
 
     .monster-card {
-      scroll-snap-align: start; /* Align cards to the start of the scroll container */
+      flex: 1 1 100%; /* Take full width of the container on smaller screens */
       border: 1px solid #ccc;
       border-radius: 8px;
       padding: 1rem;
@@ -48,13 +46,13 @@
     /* Media Queries for responsiveness */
     @media only screen and (max-width: 768px) {
       .monster-card {
-        max-width: 100%; /* Adjust the max-width for smaller screens */
+        max-width: calc(50% - 20px); /* Two cards per row on tablets */
       }
     }
 
     @media only screen and (max-width: 480px) {
-      body {
-        font-size: 16px; /* Adjust font size for smaller screens */
+      .monster-card {
+        max-width: calc(100% - 20px); /* Single card per row on mobile */
       }
     }
   </style>
