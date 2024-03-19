@@ -1,0 +1,63 @@
+body {
+      font-size: 20px;
+      color: #333;
+    }
+
+    .form-checkbox {
+      height: 1.6rem;
+      width: 1.6rem;
+    }
+
+    .monsters-container {
+      display: flex;
+      flex-wrap: wrap; /* Allow cards to wrap to new line on smaller screens */
+      gap: 20px; /* Adjust the gap between cards as needed */
+      justify-content: center; /* Center align cards */
+    }
+
+    .monster-card {
+      flex: 1 1 calc(50% - 20px); /* Two cards per row on big screens */
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      max-width: 400px;
+    }
+
+    /* Media Queries for responsiveness */
+    @media only screen and (max-width: 768px) {
+      .monster-card {
+        flex: 1 1 calc(100% - 20px); /* Single card per row on mobile */
+      }
+    }
+/* Media Queries for iPhones */
+    @media only screen and (max-width: 414px) {
+      body {
+        font-size: 16px; /* Adjust font size for better readability on iPhones */
+      }
+
+      .monster-card {
+        padding: 0.8rem; /* Adjust padding for better spacing on iPhones */
+      }
+
+      /* Add more specific styles for iPhones as needed */
+    }
+/* Top Menu Styles */
+    .top-menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+    }
+
+    .top-menu a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+    }
+
+    .top-menu a:hover {
+      text-decoration: underline;
+    }
