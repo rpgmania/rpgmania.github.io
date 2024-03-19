@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -48,9 +48,51 @@
       .monster-card {
         flex: 1 1 calc(100% - 20px); /* Single card per row on mobile */
       }
+
+      .top-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+      }
+
+      .top-menu a {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+
+      .menu-toggle {
+        display: block;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+
+      .menu-items {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        background-color: #333;
+        padding: 10px;
+      }
+
+      .menu-items a {
+        color: #fff;
+        text-decoration: none;
+        margin-bottom: 10px;
+      }
+
+      .menu-items a:hover {
+        text-decoration: underline;
+      }
+
+      .show-menu {
+        display: flex;
+      }
     }
 
-/* Top Menu Styles */
+    /* Top Menu Styles */
     .top-menu {
       display: flex;
       justify-content: space-between;
@@ -70,8 +112,6 @@
     .top-menu a:hover {
       text-decoration: underline;
     }
-
-    
   </style>
 </head>
 <body class="bg-gray-100 py-8 px-4 mx-auto">
@@ -383,6 +423,12 @@ the Ritual Countdown ticks down one value.</p>
   </div>
 </div>
 <script src="lib.js"></script>
+  <script>
+  function toggleMenu() {
+    const menuItems = document.getElementById('menuItems');
+    menuItems.classList.toggle('show-menu');
+  }
+</script>
 </body>
 </html>
   
