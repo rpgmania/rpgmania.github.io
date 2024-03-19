@@ -36,7 +36,7 @@
     }
 
     .monster-card {
-      flex: 1 1 calc(33.33% - 20px); /* Three cards per row on big screens */
+      flex: 1 1 calc(50% - 20px); /* Two cards per row on big screens */
       border: 1px solid #ccc;
       border-radius: 8px;
       padding: 1rem;
@@ -44,12 +44,6 @@
     }
 
     /* Media Queries for responsiveness */
-    @media only screen and (max-width: 1024px) {
-      .monster-card {
-        flex: 1 1 calc(50% - 20px); /* Two cards per row on tablets */
-      }
-    }
-
     @media only screen and (max-width: 768px) {
       .monster-card {
         flex: 1 1 calc(100% - 20px); /* Single card per row on mobile */
