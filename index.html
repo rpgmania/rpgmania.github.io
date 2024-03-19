@@ -15,64 +15,8 @@
   <title>Daggerheart Fight Club</title>
   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/rpgmania/rpgmania.github.io/7228d06fd04ece529a95d6b1f7c8c8d898305a1c/dhf.svg">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/stimulus/dist/stimulus.umd.js"></script>
-
-  <style>
-    body {
-      font-size: 20px;
-      color: #333;
-    }
-
-    .form-checkbox {
-      height: 1.6rem;
-      width: 1.6rem;
-    }
-
-    .monsters-container {
-      display: flex;
-      flex-wrap: wrap; /* Allow cards to wrap to new line on smaller screens */
-      gap: 20px; /* Adjust the gap between cards as needed */
-      justify-content: center; /* Center align cards */
-    }
-
-    .monster-card {
-      flex: 1 1 calc(50% - 20px); /* Two cards per row on big screens */
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 1rem;
-      max-width: 400px;
-    }
-
-    /* Media Queries for responsiveness */
-    @media only screen and (max-width: 768px) {
-      .monster-card {
-        flex: 1 1 calc(100% - 20px); /* Single card per row on mobile */
-      }
-    }
-
-/* Top Menu Styles */
-    .top-menu {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: #333;
-      color: #fff;
-    }
-
-    .top-menu a {
-      color: #fff;
-      text-decoration: none;
-      margin-right: 20px;
-      font-weight: bold;
-    }
-
-    .top-menu a:hover {
-      text-decoration: underline;
-    }
-
-    
-  </style>
 </head>
 <body class="bg-gray-100 py-8 px-4 mx-auto">
 <div class="max-w-xl mx-auto">
