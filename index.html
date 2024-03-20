@@ -25,11 +25,25 @@
   <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-8">
     <p class="text-2xl font-bold mb-2">This is a simple tool to help GMs track resources in Daggerheart.</p>
   </div>
-<!-- Top Menu -->
-  <div class="top-menu">
-    <a href="https://www.daggerheart.com/">Download the Playtest</a>
-    <a href="https://youtu.be/8vXe48xQSoo" target="_blank">Critical Role's Daggerheart Live One Shot</a>
+<!-- Hamburger Icon -->
+    <div class="menu-toggle md:hidden cursor-pointer">
+      <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M21 12H3v-2h18v2zm0-7H3v2h18V5zm0 14H3v2h18v-2z"/>
+      </svg>
+    </div>
+    <!-- Navigation Links -->
+    <div class="hidden md:flex space-x-4">
+      <a href="https://www.daggerheart.com/" class="text-white">Download the Playtest</a>
+      <a href="https://youtu.be/8vXe48xQSoo" target="_blank" class="text-white">Critical Role's Daggerheart Live One Shot</a>
+    </div>
   </div>
+
+  <!-- Include JavaScript to toggle menu -->
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.top-menu .hidden').classList.toggle('block');
+    });
+  </script>
   <div data-controller="counter" class="mb-4">
     <p class="font-bold text-lg mb-2">Action Tokens: <span data-target="counter.value">0</span></p>
     <button data-action="click->counter#increment" class="px-4 py-2 bg-blue-500 text-white rounded-md">+</button>
