@@ -147,8 +147,8 @@ application.register("attack", class extends Stimulus.Controller {
 });
 
 // Fetch the CSV file using CORS Anywhere as a proxy
-  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-  const monstersCsvUrl = 'https://example.com/path/to/monsters.csv'; // Replace this URL with your CSV file URL
+  const proxyUrl = 'https://rpgmania.github.io/';
+  const monstersCsvUrl = 'https://github.com/rpgmania/rpgmania.github.io/blob/main/monsters.csv'; // Replace this URL with your CSV file URL
 
   fetch(proxyUrl + monstersCsvUrl)
     .then(response => response.text())
