@@ -145,4 +145,38 @@ application.register("attack", class extends Stimulus.Controller {
     this.valueTarget.textContent = newValue;
   }
 });
- 
+
+// Fetch the CSV file using CORS Anywhere as a proxy
+  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+  const monstersCsvUrl = 'https://example.com/path/to/monsters.csv'; // Replace this URL with your CSV file URL
+
+  fetch(proxyUrl + monstersCsvUrl)
+    .then(response => response.text())
+    .then(text => {
+      const monstersData = text.split('\n').map(line => line.split(','));
+
+      // Remove the header line
+      monstersData.shift();
+
+      const monstersContainer = document.querySelector('.monsters-container');
+
+      // Loop through each line in the CSV data to create monster cards
+      monstersData.forEach(monster => {
+        const [name, attack, hp, description] = monster;
+
+        const monsterCard = document.createElement('div');
+        monsterCard.classList.add('max-w-lg', 'bg-white', 'rounded', 'shadow', 'p-6', 'monster-card');
+
+        monsterCard.innerHTML = `
+          <h1 class="text-2xl font-bold mb-4">${name}</h1>
+          <div class="mb-4">
+            <p><strong>Attack</strong>: ${attack}</p>
+            <p><strong>HP</strong>: ${hp}</p>
+          </div>
+          <p>${description}</p>
+        `;
+
+        monstersContainer.appendChild(monsterCard);
+      });
+    })
+    .catch(error => console.error('Error fetching CSV file:', error));
