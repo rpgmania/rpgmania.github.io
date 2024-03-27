@@ -1,0 +1,7 @@
+Name,Attack,HP,Description
+Thistlefolk Ambusher,Melee - 2d8+1 (phy),13,When the ambusher enters the scene without being spotted first, they may immediately move into melee with a target and make an attack against them. On a success, they strike with their dagger for 2d8+4 (phy) damage.
+Thistlefolk Thief,Melee - 3d6 (phy),14,Spend Fear and make an attack roll against a target. On a success, the thief places their hand on the target’s chest and blasts them backwards, dealing 2d8 magic damage and pushing them into far range.
+Strix-Wolf Mother,Melee - 1d6+3 (phy),10,The Strix-Wolf Mother attacks with her bite, dealing 1d6+3 (phy) damage. Beware of her ferocious nature and quick strikes.
+Ancient Skeleton,Melee - 3d6+2 (phy),12,The Ancient Skeleton wields a rusted sword, dealing 3d6+2 (phy) damage. It can also perform a group attack within close range, dealing 5 damage to all targets.
+Forest Wraith,Far - 1d10+4 (mag),13,The Forest Wraith drains life with Lifedrain, dealing 1d10+4 (mag) damage. It also has special abilities like Memory Delve and Pass-Through.
+
