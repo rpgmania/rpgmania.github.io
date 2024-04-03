@@ -146,3 +146,7 @@ application.register("attack", class extends Stimulus.Controller {
   }
 });
 
+//posthog integration 
+import posthog from 'posthog-js'
+
+posthog.init('phc_kqHzC8YQeZjI0BQNqjnUonMkqM3VAajj1Jcwc8tqs4q', { api_host: 'https://app.posthog.com' })
